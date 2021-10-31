@@ -1,14 +1,14 @@
 // Dependencies 
 const inqurier =require ('inqurier');
 const mysql= require('mysql2');
-const consoleTable = require('console.table');
+const table = require('console.table');
 
 // Express app for Listner 3001
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
+// app.use(express.urlencoded({extended: false}));
+// app.use(express.json());
 
 // Connecting to the DB database
 const db= mysql.createConnection(
