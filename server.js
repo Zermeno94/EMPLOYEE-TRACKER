@@ -2,7 +2,6 @@
 const inqurier =require ('inqurier');
 const mysql= require('mysql2');
 const consoleTable = require('console.table');
-const { appendFile } = require('fs');
 
 // Express app for Listner 3001
 const PORT = process.env.PORT || 3001;
@@ -23,8 +22,6 @@ const db= mysql.createConnection(
 );
 
 // INSERTS QUESTIONS TO USERS HERE 
-
-
 
 
 
