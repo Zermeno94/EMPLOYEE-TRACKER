@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Zermeno94/EMPLOYEE-TRACKER/issues"
   },
-  "homepage": "https://github.com/Zermeno94/EMPLOYEE-TRACKER#readme"
+  "homepage": "https://github.com/Zermeno94/EMPLOYEE-TRACKER#readme",
+  "dependencies": {
+    "mysql2": "^2.3.2"
+  }
 }
