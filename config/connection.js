@@ -1,3 +1,4 @@
+// Snippet pulled from HW 13
 require('dotenv').config();
 
 const Sequelize = require('sequelize');

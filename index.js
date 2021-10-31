@@ -2,6 +2,8 @@
 const inqurier =require ('inqurier');
 const mysql= require('mysql2');
 const table = require('console.table');
+const connection =require('./config/connection');
+const { exit } = require('process');
 
 // Express app for Listner 3001
 // const PORT = process.env.PORT || 3001;
@@ -22,6 +24,58 @@ const db= mysql.createConnection(
 );
 
 // INSERTS QUESTIONS TO USERS HERE 
+
+const userQuestions = () => {
+    inqurier.prompt([
+        { // Displays user prompts 
+            type: "list",
+            name: "choices",
+            message: "Please select from the selection: ",
+            choices:[
+                "View all departments",
+                "Add department",
+                "View all employee",
+                "Add employee",
+                "Update employee role ",
+                "View all roles",
+                "Add role",
+                "Exit"
+            ]
+        },
+    ]) // Prompts based on user's selection
+    .then(answer => {
+        switch (userQuestions) {
+            case "View all departments":
+                allDepartments();
+                break;
+            case "Add deparment":
+                addDepartment();
+                break;
+            case "View all employee":
+                allEmployee();
+                break;
+            case "Add employee":
+                addEmployee();
+            case "Update employee role":
+                updateEmployeeRole();
+                break;
+            case "View all roles":
+                viewAllRoles();
+                break;
+            case "Add role":
+                addRole();
+                break;
+            case "Exit":
+                exit();
+                break;
+                default:
+                    "Error";
+        }
+    })
+};
+
+
+
 
 
 
