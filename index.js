@@ -118,7 +118,7 @@ function viewAllRoles(){
     }
 }
 
-// This function will allow display prompts to the user to view and add a new role to the employee database 
+// This function will display prompts to the user to view and add a new role to the employee database 
 
 function addRole(){
     connection.query('SELECT * FROM department', (err,data)=> {
