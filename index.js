@@ -119,52 +119,129 @@ function viewAllRoles(){
 }
 
 // This function will allow display prompts to the user to view and add a new role to the employee database 
+
 function addRole(){
-    const query = 'SELECT * FROM department',  ( err,data)=>{
+    connection.query('SELECT * FROM department', (err,data)=> {
         if (err) throw err;
         let deptArray = data.map(function(department){
             return{
                 name: department.name,
                 value: department.id
             }
-        } );
+        });
         inqurier.prompt([
             {
-                type: 'input',
+                type:'input',
                 name: 'newRole',
-                message: 'Please enter the role you wish to add: '
-
+                message: 'Please enter the new role that you want to add:'
             },
             {
                 type: 'input',
-                name: 'newRoleSalary',
+                name:'newRoleSalary',
                 message: 'Please enter the salary for the new role:',
-                validate: salaryInput => {
+                validate: salaryInput =>{
                     if(isNaN(salaryInput)){
-                        console.log('Please enter a salary.')
+                        console.log('Please enter amount.')
                         return false;
-                    } else{
+                    } else {
                         return true;
                     }
                 }
             },
             {
-                type:'list',
-                name:'departmentId',
-                message: ' Please select the department that the new role will be added too:',
+                type: 'input',
+                name: 'departmentId',
+                message: 'Please select the department for the new role:',
                 choices: deptArray
             }
-        ]).then (function(input){
-            connection.query(`INSERT INTO role (title,salary,department_id,) VALUES('${input.newRole}', '${input.newRoleSalary}', '${input.departmentId}'); `, (err,res)=> {
+        ]).then(function(input){
+            connection.query(`INSERT INTO role (title,salary,department_id) VALUES ("${input.newRole}" , "${input.newRoleSalary}", "${input.departmentId}");`, (err,res)=>{
                 if (err) throw err;
-                console.log('New role has been added! ✅');
+                console.log('New role was added!  ✅ ');
                 console.log(res);
                 options();
             })
         })
     });
 }
+function viewAllEmployees(){
+    const query = ` SELECT employeed.id, employee.first_name, employee.last_name,role.salary,role.title,department.name AS department,CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employee
+    
+    LEFT JOIN role ON employee.role_id =role.id
+    LEFT JOIN department ON role.department_id = department.id
+    LEFT JOIN employee manager ON manager.id = employee.manager;`
 
+    connection.query(query,(err,res)=> {
+        if(err) throw err;
+        console.log(res);
+        console.table(res);
+        options();
+    })
+};
+
+//This function will allow user to add an employee to the database
+// An array of role objects to return VALUES
+function addEmployee() {
+    const roleArray = [];
+    const managerArray = [];
+    connection.query('SELECT id, title FROM role', (err,data)=>{
+        if(err) throw err;
+        roleArray= data.map(function(role){
+            return {
+                name: role.title,
+                value: role.id
+            }
+        });
+        // An array of manager objects to return VALUES
+        connection.query('SELECT id, first_name, last_name FROM employee', (err,data)=>{
+            if (err) throw err;
+            managerArray=data.map(function(employee){
+                return{
+                    name: employee.first_name + " " + employee.last_name,
+                    value: employee.id
+                }
+            });
+            managerArray.push({
+                value:null,
+                name: 'None'
+            })
+
+            inqurier.prompt([
+                {
+                    type: 'input',
+                    name: 'newFirstName',
+                    message: 'Please enter the employee\'s first name:'
+                },
+                {
+                    type: 'input',
+                    name: 'newLastName',
+                    message: 'Please enter the employee\'s last name:'
+                },
+                {
+                    type: 'list',
+                    name: 'employeeRole',
+                    message: 'Select the employee\'s role:',
+                    choices: roleArray
+                },
+                {
+                    type: 'list ',
+                    name: 'employeeManager',
+                    message: 'Select the designated manager for the employee:',
+                    choices: managerArray
+                },
+            ]).then(function(input){
+                const query = `INSERT INTO employee(first_name,last_name,role_id,manager_id) VALUES (?,?,?,?)`;
+                const params = [input.newFirstName, input.newLastName,input.employeeRole,input.employeeManager];
+                connection.query(query,params, (err,res)=> {
+                    if(err) throw err;
+                    console.log('New employee was added! ✅ ');
+                    console.log(res);
+                    options();
+                })
+            })
+        })
+    })
+}
 
 
 
