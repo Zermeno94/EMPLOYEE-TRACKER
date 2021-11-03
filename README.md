@@ -1,5 +1,7 @@
 # HW-12  EMPLOYEE-TRACKER 👩‍💻
 
+![GitHub license](https://img.shields.io/badge/license-MIT-ff69b4.svg)
+
 ## Description
 This application will provide an easy way to allow users to view and interact with information stored in the employee database.
 
