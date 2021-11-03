@@ -1,22 +1,25 @@
 // Dependencies 
 const inqurier =require ('inqurier');
 const mysql= require('mysql2');
-const cTable = require('console.table');
-const { exit } = require('process');
+const table = require('console.table');
+const { query} = require('process');
+const express = require('express');
+
 
 // Express app for Listner 3001
-// const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
+const app = express();
 
 // Middleware
-// app.use(express.urlencoded({extended: false}));
-// app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 // Connecting to the DB database
 const db= mysql.createConnection(
     {
         host:'localhost',
         user: 'root',
-        password:'',
+        password:'HiddenLeaf_04',
         database: 'company_db' 
     },
     console.log('Connected to the company_db.')
@@ -68,12 +71,99 @@ const userQuestions = () => {
                 exit();
                 break;
                 default:
-                    "Error";
+                    console.log("Warning: Selection was unknown.");
         }
     })
 };
 
+function viewAllDepartments() {
+    const query = 'SELECT * FROM department';
+    connection.query(query, function(err,rest) {
+        if(err){
+            console.log(err)
+        } else {
+            console.log(res)
+            console.table(res);
+            options();
+        }
+    })
+};
 
+// This function will allow display prompts to the user to input new department to the employee database
+function addDepartment(){
+    inqurier.prompt([
+        {
+            type:'input',
+            name: 'newDepartment',
+            message:'Please enter new department: '
+        }
+    ]).then (function (input){
+        connection.query(`INSERT INTO department (name) VALUES ('${input.newDepartment}');`, (err,res)=>
+        {
+            if(err) throw err;
+            console.log('New department was added! ✅ ');
+            console.log(res);
+            options();
+        })
+    })
+};
+
+function viewAllRoles(){
+    const query = 'SELECT * FROM role';
+    connection.query(query), (err,res)=> {
+        if(err) throw err;
+        console.log(res);
+        console.table(res);
+        options();
+    }
+}
+
+// This function will allow display prompts to the user to view and add a new role to the employee database 
+function addRole(){
+    const query = 'SELECT * FROM department',  ( err,data)=>{
+        if (err) throw err;
+        let deptArray = data.map(function(department){
+            return{
+                name: department.name,
+                value: department.id
+            }
+        } );
+        inqurier.prompt([
+            {
+                type: 'input',
+                name: 'newRole',
+                message: 'Please enter the role you wish to add: '
+
+            },
+            {
+                type: 'input',
+                name: 'newRoleSalary',
+                message: 'Please enter the salary for the new role:',
+                validate: salaryInput => {
+                    if(isNaN(salaryInput)){
+                        console.log('Please enter a salary.')
+                        return false;
+                    } else{
+                        return true;
+                    }
+                }
+            },
+            {
+                type:'list',
+                name:'departmentId',
+                message: ' Please select the department that the new role will be added too:',
+                choices: deptArray
+            }
+        ]).then (function(input){
+            connection.query(`INSERT INTO role (title,salary,department_id,) VALUES('${input.newRole}', '${input.newRoleSalary}', '${input.departmentId}'); `, (err,res)=> {
+                if (err) throw err;
+                console.log('New role has been added! ✅');
+                console.log(res);
+                options();
+            })
+        })
+    });
+}
 
 
 
