@@ -1,8 +1,7 @@
 // Dependencies 
 const inqurier =require ('inqurier');
 const mysql= require('mysql2');
-const table = require('console.table');
-const connection =require('./config/connection');
+const cTable = require('console.table');
 const { exit } = require('process');
 
 // Express app for Listner 3001

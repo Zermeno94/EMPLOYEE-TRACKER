@@ -6,10 +6,10 @@ VALUE ("Hokage"),
              ("Genin");
 
 INSERT INTO role(title,salary,department_id)
-VALUES  ('Hokage', 450000,2),
-                ('Kage',50000,4),
-                ('Chuunin',100000,3)
-                ('Jounin Clerk',40000,1)
+VALUES  ('Hokage', 450000,1),
+                ('Kage',50000,2),
+                ('Chuunin',10000,4)
+                ('Jounin',40000,3)
                 ('Genin Handler'55000,5)
 
 INSERT INTO employees (first_name,last_name,roles_id,manager_id)
