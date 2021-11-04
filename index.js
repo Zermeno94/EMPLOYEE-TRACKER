@@ -3,7 +3,7 @@ const inquirer =require ('inquirer');
 const mysql= require('mysql2');
 const table = require('console.table');
 //const express = require('express');
-
+// const connection = require("./config/connection")
 
 // Express app for Listner 3001
 // const PORT = process.env.PORT || 3001;
@@ -14,7 +14,7 @@ const table = require('console.table');
 // app.use(express.json());
 
 // Connecting to the DB database
-const db= mysql.createConnection(
+const connection= mysql.createConnection(
     {
         host:'localhost',
         user: 'root',
@@ -32,7 +32,7 @@ function options () {
     inquirer.prompt([
         { // Displays user prompts 
             type: "list",
-            name: "main menu",
+            name: "mainList",
             message: "Please choice from the main menu: ",
             choices:[
                 "View all departments",
@@ -47,7 +47,7 @@ function options () {
         },
     ]) // Prompts based on user's selection
     .then(function(input) {
-        switch (input.main) {
+        switch (input.mainList) {
             case "View all departments":
                 viewAllDepartments();
                 break;
