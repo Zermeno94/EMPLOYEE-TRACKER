@@ -355,6 +355,17 @@ function deleteRole(){
     })
 }
 
+connection.connect((err)=>{
+    if(err) throw err;
+    console.log(`Connected to the company_db database`);
+    options();
+})
+
+// This will end the application and prompt to the user that they have exited. 
+exitApp = () => {
+    console.log('Thank you for visting!✌️');
+    connection.end();
+}
 
 // TODO LIST 
 //THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
