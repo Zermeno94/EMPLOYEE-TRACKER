@@ -19,7 +19,7 @@ const db= mysql.createConnection(
     {
         host:'localhost',
         user: 'root',
-        password:'HiddenLeaf_04',
+        password:'pass',
         database: 'company_db' 
     },
     console.log('Connected to the company_db.')
@@ -205,7 +205,7 @@ function addEmployee() {
                 value:null,
                 name: 'None'
             })
-
+            // Prompts that will display  to the user when  adding an employee 
             inqurier.prompt([
                 {
                     type: 'input',
@@ -239,6 +239,54 @@ function addEmployee() {
                     options();
                 })
             })
+        })
+    })
+}
+
+//This function will allow the user to update the employee's role
+function updateEmployeeRole(){
+    const roleArray = [];
+    const employeeArray = [];
+    
+    connection.query('SELECT id, title FROM role', (err,data) =>{
+        if (err) throw err;
+        roleArray = data.map(function(role){
+            return {
+                name: role.title,
+                value: role.id
+            }
+        });
+        connection.query('SELECT id, first_name, last_name FROM employee', (err,data)=>{
+            if (err) throw err;
+            employeeArray =data.map(function(employee){
+                return{
+                    name: employee.first_name + " "+ employee.last_name,
+                    value: employee.id
+                }
+
+            });
+            // Prompts that will display to the user when updating the employee's role
+            inqurier.prompt([
+                {
+                    type: 'list',
+                    name:'updateEmployee',
+                    message: 'Select the employee you would like to update:',
+                    choices: employeeArray
+                },
+                {
+                    type: 'list',
+                    name: 'newRole',
+                    message: 'Select the role that you want to assign to the selected employee:',
+                    choices: roleArray
+                },
+            ]).then(function(input) {
+                connection.query(`UPDATE employee SET role_id = "${input.newRole}" WHERE id = "${input.updateEmployee}"`,(err,res)=>{
+                    if (err) throw err;
+                    console.log('Employee has been updated! ✅ ');
+                    options();
+                })
+            })
+            
         })
     })
 }
