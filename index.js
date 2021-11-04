@@ -24,8 +24,10 @@ const db= mysql.createConnection(
     console.log('Connected to the company_db.')
 );
 
-// INSERTS QUESTIONS TO USERS HERE 
+// Calling function globally in the file to start application
+options();
 
+// INSERTS QUESTIONS TO USERS HERE 
 function options () {
     inquirer.prompt([
         { // Displays user prompts 
