@@ -2,10 +2,10 @@
   "name": "EMPLOYEE-TRACKER",
   "version": "1.0.0",
   "description": "## Your Task",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js" 
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,6 @@
     "console.table": "^0.10.0",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.2"
-  }
+  },
+  "devDependencies": {}
 }
