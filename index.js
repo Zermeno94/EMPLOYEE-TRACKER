@@ -123,7 +123,9 @@ function addDepartment(){
 function viewAllRoles(){
     const query = 'SELECT * FROM role';
     connection.query(query), (err,res)=> {
+        //the error object is being created and is being thrown.
         if(err) throw err;
+        // Console.logging res to send back HTTP response
         console.log(res);
         console.table(res);
         mainList();
