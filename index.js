@@ -27,10 +27,10 @@ const db= mysql.createConnection(
 // INSERTS QUESTIONS TO USERS HERE 
 
 const userQuestions = () => {
-    inqurier.prompt([
+    inquirer.prompt([
         { // Displays user prompts 
             type: "list",
-            name: "choices",
+            name: "main menu",
             message: "Please select from the selection: ",
             choices:[
                 "View all departments",
@@ -44,7 +44,7 @@ const userQuestions = () => {
             ]
         },
     ]) // Prompts based on user's selection
-    .then(answer => {
+    .then(input=> {
         switch (userQuestions) {
             case "View all departments":
                 allDepartments();
@@ -77,7 +77,7 @@ const userQuestions = () => {
 
 function viewAllDepartments() {
     const query = 'SELECT * FROM department';
-    connection.query(query, function(err,rest) {
+    connection.query(query, function(err,res) {
         if(err){
             console.log(err)
         } else {
@@ -354,11 +354,11 @@ function deleteRole(){
     })
 }
 
-connection.connect((err)=>{
-    if(err) throw err;
-    console.log(`Connected to the company_db database`);
-    options();
-})
+// connection.connect((err)=>{
+//     if(err) throw err;
+//     console.log(`Connected to the company_db database`);
+//     options();
+// })
 
 // This will end the application and prompt to the user that they have exited. 
 exitApp = () => {

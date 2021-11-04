@@ -1,8 +1,10 @@
--- Starter of Mysql 
+-- Starter of MySQL
 DROP DATABASE IF EXIST company_db;
 CREATE DATABASE company_db;
-
 USE company_db;
+
+DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS role;
 
 -- Table for Departments 
 -- 'name' to hold department name 
