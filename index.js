@@ -25,10 +25,10 @@ const connection= mysql.createConnection(
 );
 
 // Calling function globally in the file to start application
-options();
+mainList();
 
 // INSERTS QUESTIONS TO USERS HERE 
-function options () {
+function mainList() {
     inquirer.prompt([
         { // Displays user prompts 
             type: "list",
@@ -96,14 +96,14 @@ function viewAllDepartments() {
         } else {
             console.log(res)
             console.table(res);
-            options();
+            mainList();
         }
     })
 };
 
 // This function will allow display prompts to the user to input new department to the employee database
 function addDepartment(){
-    inqurier.prompt([
+    inquirer.prompt([
         {
             type:'input',
             name: 'newDepartment',
@@ -115,7 +115,7 @@ function addDepartment(){
             if(err) throw err;
             console.log('New department was added! ✅ ');
             console.log(res);
-            options();
+            mainList();
         })
     })
 };
@@ -126,7 +126,7 @@ function viewAllRoles(){
         if(err) throw err;
         console.log(res);
         console.table(res);
-        options();
+        mainList();
     }
 }
 
@@ -171,7 +171,7 @@ function addRole(){
                 if (err) throw err;
                 console.log('New role was added!  ✅ ');
                 console.log(res);
-                options();
+                mainList();
             })
         })
     });
@@ -190,7 +190,7 @@ function viewAllEmployees(){
         if(err) throw err;
         console.log(res);
         console.table(res);
-        options();
+        mainList();
     })
 };
 
@@ -251,7 +251,7 @@ function addEmployee() {
                     if(err) throw err;
                     console.log('New employee was added! ✅ ');
                     console.log(res);
-                    options();
+                    mainList();
                 })
             })
         })
@@ -281,7 +281,7 @@ function updateEmployeeRole(){
 
             });
             // Prompts that will display to the user when updating the employee's role
-            inqurier.prompt([
+            inquirer.prompt([
                 {
                     type: 'list',
                     name:'updateEmployee',
@@ -298,7 +298,7 @@ function updateEmployeeRole(){
                 connection.query(`UPDATE employee SET role_id = "${input.newRole}" WHERE id = "${input.updateEmployee}"`,(err,res)=>{
                     if (err) throw err;
                     console.log('Employee has been updated! ✅ ');
-                    options();
+                    mainList();
                 })
             })
             
@@ -310,7 +310,7 @@ function updateEmployeeRole(){
 // deleteDepartment();
 
 function deleteDepartment(){
-    inqurier.prompt([
+    inquirer.prompt([
         {
             type: 'input',
             name: 'department',
@@ -324,7 +324,7 @@ function deleteDepartment(){
         connection.query(query,deleteDept,(err,res)=>{
             if(err) throw err;
             console.log('Your selected department has been deleted ! ✅ ');
-            options();
+            mainList();
         })
     })
 }
@@ -348,7 +348,7 @@ function deleteEmployee(){
         connection.query(query, deleteEmployee, (err,res)=> {
             if(err) throw err;
             console.log('The selected employee has been deleted! ✅ ');
-            options();
+            mainList();
         })
     })
 }
@@ -358,7 +358,7 @@ function deleteEmployee(){
 // deleteRole();
 
 function deleteRole(){
-    inqurier.prompt([
+    inquirer.prompt([
         {
             type: 'input',
             name:'role',
@@ -372,7 +372,7 @@ function deleteRole(){
         connection.query(query,deleteRoleId, (err,res)=>{
             if (err) throw err;
             console.log('The selected role has been deleted! ✅ ');
-            options();
+            mainList();
         })
     })
 }
