@@ -26,7 +26,7 @@ const db= mysql.createConnection(
 
 // INSERTS QUESTIONS TO USERS HERE 
 
-const userQuestions = () => {
+function options () {
     inquirer.prompt([
         { // Displays user prompts 
             type: "list",
