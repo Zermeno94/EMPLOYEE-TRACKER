@@ -25,3 +25,4 @@ VALUES  ('Naruto', 'Uzumaki',1,NULL),
         
         -- TODO--
         -- Need to create role id and manger ids
+  

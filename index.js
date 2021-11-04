@@ -77,7 +77,7 @@ function options () {
     })
 };
 
-viewAllDepartments();
+// viewAllDepartments();
 
 function viewAllDepartments() {
     const query = 'SELECT * FROM department';
@@ -168,7 +168,7 @@ function addRole(){
     });
 }
 
-viewAllEmployees();
+// viewAllEmployees();
 
 function viewAllEmployees(){
     const query = ` SELECT employeed.id, employee.first_name, employee.last_name,role.salary,role.title,department.name AS department,CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employee
@@ -298,7 +298,7 @@ function updateEmployeeRole(){
 }
 
 // This will allow the user to delete a department from the database
-deleteDepartment();
+// deleteDepartment();
 
 function deleteDepartment(){
     inqurier.prompt([
@@ -322,10 +322,10 @@ function deleteDepartment(){
 
 // This function will allow the user to delete an employee 
 
-deleteEmployee();
+// deleteEmployee();
 
 function deleteEmployee(){
-    inqurier.prompt([
+    inquirer.prompt([
         {
             type: 'input',
             name: 'employeeId',
@@ -346,7 +346,7 @@ function deleteEmployee(){
 
 // This function will allow the user to delete a role
 
-deleteRole();
+// deleteRole();
 
 function deleteRole(){
     inqurier.prompt([
