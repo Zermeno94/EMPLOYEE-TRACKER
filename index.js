@@ -33,7 +33,7 @@ function options () {
         { // Displays user prompts 
             type: "list",
             name: "main menu",
-            message: "Please select from the selection: ",
+            message: "Please choice from the main menu: ",
             choices:[
                 "View all departments",
                 "Add department",
