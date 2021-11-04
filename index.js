@@ -291,6 +291,25 @@ function updateEmployeeRole(){
     })
 }
 
+function deleteDepartment(){
+    inqurier.prompt([
+        {
+            type: 'input',
+            name: 'department',
+            message: 'Please enter the name of the department you wish to delete: '
+        }
+    ]).then((input)=>{
+        const query = `DELETE FROM department WHERE?`;
+        const deleteDept ={
+            name: input.department
+        };
+        connection.query(query,deleteDept,(err,res)=>{
+            if(err) throw err;
+            console.log('Your selected department has been deleted  ✅ ');
+            options();
+        })
+    })
+}
 
 
 
