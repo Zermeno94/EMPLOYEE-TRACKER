@@ -63,6 +63,7 @@ Allows non-developers to use a command-line application to manage a company's em
 * [https://www.w3schools.com/sql/func_sqlserver_concat.asp](#https://www.w3schools.com/sql/func_sqlserver_concat.asp)
 *[https://www.npmjs.com/package/console.table](#https://www.npmjs.com/package/console.table)
 *[https://github.com/creynders/grunt-generate-configs/issues/1](#https://github.com/creynders/grunt-generate-configs/issues/1)
+*[https://linuxize.com/post/show-tables-in-mysql-database/#:~:text=the%20command%20line.-,Show%20MySQL%20Tables,run%20the%20SHOW%20TABLES%20command.&text=The%20optional%20FULL%20modifier%20will,as%20a%20second%20output%20column.](#https://linuxize.com/post/show-tables-in-mysql-database/#:~:text=the%20command%20line.-,Show%20MySQL%20Tables,run%20the%20SHOW%20TABLES%20command.&text=The%20optional%20FULL%20modifier%20will,as%20a%20second%20output%20column.)
 
 
 ## License 📍

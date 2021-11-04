@@ -3,8 +3,8 @@ DROP DATABASE IF EXIST company_db;
 CREATE DATABASE company_db;
 USE company_db;
 
-DROP TABLE IF EXISTS department;
-DROP TABLE IF EXISTS role;
+-- DROP TABLE IF EXISTS department;
+-- DROP TABLE IF EXISTS role;
 
 -- Table for Departments 
 -- 'name' to hold department name 
@@ -38,3 +38,6 @@ CREATE TABLE employees (
     FOREIGN KEY (roles_id) REFERENCES roles(id) , manager_id INT,
     FOREIGN KEY (manager_id) REFERENCES employees(id)
 );
+
+--TODO--
+-- Need to work on company_db to show all employees/depts/ids
