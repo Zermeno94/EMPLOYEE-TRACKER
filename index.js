@@ -291,6 +291,7 @@ function updateEmployeeRole(){
     })
 }
 
+// This will allow the user to delete a department from the database
 function deleteDepartment(){
     inqurier.prompt([
         {
@@ -305,12 +306,54 @@ function deleteDepartment(){
         };
         connection.query(query,deleteDept,(err,res)=>{
             if(err) throw err;
-            console.log('Your selected department has been deleted  ✅ ');
+            console.log('Your selected department has been deleted ! ✅ ');
             options();
         })
     })
 }
 
+// This function will allow the user to delete an employee 
+function deleteEmployee(){
+    inqurier.prompt([
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'Please enter the employee Id that you wish to delete:'
+        }
+    ]).then((input)=>{
+        const query = `DELETE FROM employee WHERE`;
+        const deleteEmployee = {
+            id: input.employeeId
+        };
+        connection.query(query, deleteEmployee, (err,res)=> {
+            if(err) throw err;
+            console.log('The selected employee has been deleted! ✅ ');
+            options();
+        })
+    })
+}
+
+// This function will allow the user to delete a role
+
+function deleteRole(){
+    inqurier.prompt([
+        {
+            type: 'input',
+            name:'role',
+            message: 'Please enter the role id that you wish to delete:'
+        }
+    ]).then((input)=>{
+        const query = `DELETE FROM role WHERE?`;
+        const deleteRoleId = {
+            id: input.role
+        };
+        connection.query(query,deleteRoleId, (err,res)=>{
+            if (err) throw err;
+            console.log('The selected role has been deleted! ✅ ');
+            options();
+        })
+    })
+}
 
 
 // TODO LIST 
