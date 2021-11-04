@@ -49,13 +49,13 @@ function options () {
     .then(function(input) {
         switch (input.main) {
             case "View all departments":
-                allDepartments();
+                viewAllDepartments();
                 break;
             case "Add department":
                 addDepartment();
                 break;
             case "View all employee":
-                allEmployee();
+                viewAllEmployees();
                 break;
             case "Add employee":
                 addEmployee();
@@ -68,8 +68,17 @@ function options () {
             case "Add role":
                 addRole();
                 break;
+            case 'Delete Department':
+                deleteDepartment();
+            break;
+            case 'Delete Employee':
+                deleteEmployee();
+            break;
+            case 'Delete Role':
+                deleteRole();
+            break;
             case "Exit":
-                exit();
+                exitApp();
                 break;
                 default:
                     console.log("Warning: Selection was unknown.");
