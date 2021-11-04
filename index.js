@@ -89,7 +89,7 @@ function mainList() {
 // viewAllDepartments();
 
 function viewAllDepartments() {
-    const query = 'SELECT * FROM department';
+    const query = 'SELECT * FROM departments';
     connection.query(query, function(err,res) {
         if(err){
             console.log(err)
@@ -110,7 +110,7 @@ function addDepartment(){
             message:'Please enter new department: '
         }
     ]).then (function (input){
-        connection.query(`INSERT INTO department (name) VALUES ('${input.newDepartment}');`, (err,res)=>
+        connection.query(`INSERT INTO departments (name) VALUES ('${input.newDepartments}');`, (err,res)=>
         {
             if(err) throw err;
             console.log('New department was added! ✅ ');
@@ -121,7 +121,7 @@ function addDepartment(){
 };
 
 function viewAllRoles(){
-    const query = 'SELECT * FROM role';
+    const query = 'SELECT * FROM roles';
     connection.query(query), (err,res)=> {
         //the error object is being created and is being thrown.
         if(err) throw err;
@@ -155,7 +155,7 @@ function addRole(){
                 message: 'Please enter the salary for the new role:',
                 validate: salaryInput =>{
                     if(isNaN(salaryInput)){
-                        console.log('Please enter amount.')
+                        console.log('Please enter amount:')
                         return false;
                     } else {
                         return true;
@@ -169,7 +169,7 @@ function addRole(){
                 choices: deptArray
             }
         ]).then(function(input){
-            connection.query(`INSERT INTO role (title,salary,department_id) VALUES ("${input.newRole}" , "${input.newRoleSalary}", "${input.departmentId}");`, (err,res)=>{
+            connection.query(`INSERT INTO roles (title,salary,department_id) VALUES ("${input.newRole}" , "${input.newRoleSalary}", "${input.departmentId}");`, (err,res)=>{
                 if (err) throw err;
                 console.log('New role was added!  ✅ ');
                 console.log(res);
@@ -182,10 +182,10 @@ function addRole(){
 // viewAllEmployees();
 
 function viewAllEmployees(){
-    const query = ` SELECT employeed.id, employee.first_name, employee.last_name,role.salary,role.title,department.name AS department,CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employee
+    const query = ` SELECT employee.id, employee.first_name, employee.last_name,role.salary,role.title,department.name AS department,CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employee
     
     LEFT JOIN role ON employee.role_id =role.id
-    LEFT JOIN department ON role.department_id = department.id
+    LEFT JOIN departments ON role.department_id = department.id
     LEFT JOIN employee manager ON manager.id = employee.manager;`
 
     connection.query(query,(err,res)=> {
@@ -201,7 +201,7 @@ function viewAllEmployees(){
 function addEmployee() {
     const roleArray = [];
     const managerArray = [];
-    connection.query('SELECT id, title FROM role', (err,data)=>{
+    connection.query('SELECT id, title FROM roles', (err,data)=>{
         if(err) throw err;
         roleArray= data.map(function(role){
             return {
