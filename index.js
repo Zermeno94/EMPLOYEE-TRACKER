@@ -46,8 +46,8 @@ function options () {
             ]
         },
     ]) // Prompts based on user's selection
-    .then(input=> {
-        switch (userQuestions) {
+    .then(function(input) {
+        switch (input.main) {
             case "View all departments":
                 allDepartments();
                 break;

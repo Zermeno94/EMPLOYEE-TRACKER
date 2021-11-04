@@ -62,6 +62,7 @@ Allows non-developers to use a command-line application to manage a company's em
 * [https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md](#https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
 * [https://www.w3schools.com/sql/func_sqlserver_concat.asp](#https://www.w3schools.com/sql/func_sqlserver_concat.asp)
 *[https://www.npmjs.com/package/console.table](#https://www.npmjs.com/package/console.table)
+*[https://github.com/creynders/grunt-generate-configs/issues/1](#https://github.com/creynders/grunt-generate-configs/issues/1)
 
 
 ## License 📍
