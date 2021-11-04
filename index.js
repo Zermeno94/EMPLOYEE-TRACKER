@@ -77,6 +77,8 @@ function options () {
     })
 };
 
+viewAllDepartments();
+
 function viewAllDepartments() {
     const query = 'SELECT * FROM department';
     connection.query(query, function(err,res) {
@@ -165,6 +167,9 @@ function addRole(){
         })
     });
 }
+
+viewAllEmployees();
+
 function viewAllEmployees(){
     const query = ` SELECT employeed.id, employee.first_name, employee.last_name,role.salary,role.title,department.name AS department,CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employee
     
@@ -293,6 +298,8 @@ function updateEmployeeRole(){
 }
 
 // This will allow the user to delete a department from the database
+deleteDepartment();
+
 function deleteDepartment(){
     inqurier.prompt([
         {
@@ -314,6 +321,9 @@ function deleteDepartment(){
 }
 
 // This function will allow the user to delete an employee 
+
+deleteEmployee();
+
 function deleteEmployee(){
     inqurier.prompt([
         {
@@ -335,6 +345,8 @@ function deleteEmployee(){
 }
 
 // This function will allow the user to delete a role
+
+deleteRole();
 
 function deleteRole(){
     inqurier.prompt([
