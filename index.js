@@ -135,7 +135,7 @@ function viewAllRoles(){
 // This function will display prompts to the user to view and add a new role to the employee database 
 
 function addRole(){
-    connection.query('SELECT * FROM department', (err,data)=> {
+    connection.query('SELECT * FROM departments', (err,data)=> {
         if (err) throw err;
         let deptArray = data.map(function(department){
             return{
