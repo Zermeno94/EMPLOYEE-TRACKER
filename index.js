@@ -2,7 +2,7 @@
 const inqurier =require ('inqurier');
 const mysql= require('mysql2');
 const table = require('console.table');
-const express = require('express');
+//const express = require('express');
 
 
 // Express app for Listner 3001
@@ -49,7 +49,7 @@ const userQuestions = () => {
             case "View all departments":
                 allDepartments();
                 break;
-            case "Add deparment":
+            case "Add department":
                 addDepartment();
                 break;
             case "View all employee":
