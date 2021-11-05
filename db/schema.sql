@@ -39,5 +39,3 @@ CREATE TABLE employees (
     FOREIGN KEY (manager_id) REFERENCES employees(id)
 );
 
---TODO--
--- Need to work on company_db to show all employees/depts/ids
