@@ -1,16 +1,17 @@
-INSERT INTO department (name)
-VALUE ("Hokage"),  --manager--
-            ("Kage"), --sales--
-             ("Chuunin "), --accountant--
-             ("Jounin"), --warehouse rep--
-             ("Genin"); --warehouse handler--
+INSERT INTO departments (id, first_name,last_name,salary,title,departments,manager)
+VALUE ("Managment"),  
+            ("Accountant"), 
+             ("Data Anaylst "),
+             ("Marketing"), 
+             ("Sales"); 
 
-INSERT INTO role(title,salary,department_id)
-VALUES  ('Hokage', 450000,1),
-                ('Kage',50000,2),
-                ('Chuunin',10000,3)
-                ('Jounin',40000,4)
-                ('Genin Handler'55000,5)
+INSERT INTO roles (title,salary,department_id)
+VALUES  ('CEO', 450000,1),
+                ('Regional Manager',50000,2),
+                ('Content Marketing Manager',10000,3)
+                ('Marketing Assistant',40000,4)
+                ('Sales Manager',55000,5),
+                ('Sales Representative',55000,6)
 
 INSERT INTO employees (first_name,last_name,roles_id,manager_id)
 VALUES  ('Naruto', 'Uzumaki',1,NULL),
