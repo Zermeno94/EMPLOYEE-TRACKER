@@ -28,6 +28,9 @@ User will need to use the [MySQL2 package](https://www.npmjs.com/package/mysql2)
     npm install inquirer
 ```
 ```bash
+    npm install console.table
+```
+```bash
     npm start
 ```
 ```bash

@@ -24,6 +24,5 @@ VALUES  ('Naruto', 'Uzumaki',1,NULL),
                 ('Sakura','Haruno',8,5),
                 ('Rock','Lee',9,6);
         
-        -- TODO--
-        -- Need to create role id and manger ids
+       
   
