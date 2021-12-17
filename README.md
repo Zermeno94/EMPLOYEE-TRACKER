@@ -44,10 +44,10 @@ Allows non-developers to use a command-line application to manage a company's em
 
 ### Demo 🎥
 
-* [Link to Demo]()
+* [Link to Demo](https://watch.screencastify.com/v/g0Y1TyEex9aNs89MVOBm)
 
 ### GitHub & Deploy Link
-
+ß
 * [GitHub Link](https://github.com/Zermeno94/TEAM-PRO-GEN)
 * [Deploy Link]()
 
