@@ -25,5 +25,3 @@ VALUES  ('Naruto', 'Uzumaki',1,NULL),
                 ('Sakura','Haruno',3,5),
                 ('Rock','Lee',4,6);
         
-       
-  

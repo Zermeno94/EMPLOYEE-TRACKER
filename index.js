@@ -37,7 +37,7 @@ function mainList() {
             choices:[
                 "View all departments",
                 "Add department",
-                "View all employee",
+                "View all employees",
                 "Add employee",
                 "Update employee role ",
                 "View all roles",
@@ -54,7 +54,7 @@ function mainList() {
             case "Add department":
                 addDepartment();
                 break;
-            case "View all employee":
+            case "View all employees":
                 viewAllEmployees();
                 break;
             case "Add employee":
@@ -182,11 +182,11 @@ function addRole(){
 // viewAllEmployees();
 
 function viewAllEmployees(){
-    const query = ` SELECT employee.id, employee.first_name, employee.last_name,role.salary,role.title,department.name AS department,CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employee
+    const query = ` SELECT employees.id, employees.first_name, employees.last_name,roles.salary,roles.title,departments_name AS departments,CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employees.
     
-    LEFT JOIN role ON employee.role_id =role.id
-    LEFT JOIN departments ON role.department_id = department.id
-    LEFT JOIN employee manager ON manager.id = employee.manager;`
+    LEFT JOIN roles ON employees.roles_id = roles_id
+    LEFT JOIN departments ON roles.departments_id = departments.id
+    LEFT JOIN employees.manager ON manager.id = employees.manager;`
 
     connection.query(query,(err,res)=> {
         if(err) throw err;
