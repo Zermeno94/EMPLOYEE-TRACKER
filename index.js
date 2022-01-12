@@ -203,7 +203,7 @@ function addEmployee() {
     const managerArray = [];
     connection.query('SELECT id, title FROM roles', (err,data)=>{
         if(err) throw err;
-        roleArray= data.map(function(role){
+        const roleArray = data.map(function(role){
             return {
                 name: role.title,
                 value: role.id
