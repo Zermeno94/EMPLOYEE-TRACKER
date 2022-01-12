@@ -170,7 +170,7 @@ function addRole(){
                 choices: deptArray
             }
         ]).then(function(input){
-            connection.query(`INSERT INTO roles (title,salary,department_id) VALUES ("${input.newRole}" , "${input.newRoleSalary}", "${input.departmentId}");`, (err,res)=>{
+            connection.query(`INSERT INTO roles (title,salary,departments_id) VALUES ("${input.newRole}" , "${input.newRoleSalary}", "${input.departmentId}");`, (err,res)=>{
                 if (err) throw err;
                 console.log('New role was added!  ✅ ');
                 console.log(res);
@@ -211,7 +211,7 @@ function addEmployee() {
             }
         });
         // An array of manager objects to return VALUES
-        connection.query('SELECT id, first_name, last_name FROM employee', (err,data)=>{
+        connection.query('SELECT id, first_name, last_name FROM employees', (err,data)=>{
             if (err) throw err;
             managerArray=data.map(function(employee){
                 return{
@@ -248,7 +248,7 @@ function addEmployee() {
                     choices: managerArray
                 },
             ]).then(function(input){
-                const query = `INSERT INTO employee(first_name,last_name,role_id,manager_id) VALUES (?,?,?,?)`;
+                const query = `INSERT INTO employees(first_name,last_name,role_id,manager_id) VALUES (?,?,?,?)`;
                 const params = [input.newFirstName, input.newLastName,input.employeeRole,input.employeeManager];
                 connection.query(query,params, (err,res)=> {
                     if(err) throw err;
@@ -266,7 +266,7 @@ function updateEmployeeRole(){
     const roleArray = [];
     const employeeArray = [];
     
-    connection.query('SELECT id, title FROM role', (err,data) =>{
+    connection.query('SELECT id, title FROM roles', (err,data) =>{
         if (err) throw err;
         roleArray = data.map(function(role){
             return {
@@ -274,7 +274,7 @@ function updateEmployeeRole(){
                 value: role.id
             }
         });
-        connection.query('SELECT id, first_name, last_name FROM employee', (err,data)=>{
+        connection.query('SELECT id, first_name, last_name FROM employees', (err,data)=>{
             if (err) throw err;
             employeeArray =data.map(function(employee){
                 return{
@@ -344,7 +344,7 @@ function deleteEmployee(){
             message: 'Please enter the employee Id that you wish to delete:'
         }
     ]).then((input)=>{
-        const query = `DELETE FROM employee WHERE`;
+        const query = `DELETE FROM employees WHERE`;
         const deleteEmployee = {
             id: input.employeeId
         };
