@@ -7,12 +7,12 @@ VALUES
              ("Sales"); 
 
 INSERT INTO roles (title,salary,departments_id)
-VALUES  ('CEO', 450,000,1),
-                ('Regional Manager',50,000,2),
-                ('Content Marketing Manager',10,000,3),
-                ('Marketing Assistant',40,000,4),
-                ('Sales Manager',55,000,5),
-                ('Sales Representative',55,000,5);
+VALUES  ('CEO', 450000,1),
+                ('Regional Manager',50000,2),
+                ('Content Marketing Manager',10000,3),
+                ('Marketing Assistant',40000,4),
+                ('Sales Manager',55000,5),
+                ('Sales Representative',55000,5);
 
 INSERT INTO employees (first_name,last_name,roles_id,manager_id)
 VALUES  ('Naruto', 'Uzumaki',1,NULL),
