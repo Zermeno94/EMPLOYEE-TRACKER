@@ -21,9 +21,9 @@ VALUES  ('Naruto', 'Uzumaki',1,NULL),
                 ('Kakashi', 'Hatake',4, NULL),
                 ('Hinata', 'Hyuga',5,3),
                 ('Pervy','Sage',6,1),
-                ('Grandma', 'Tsunade',7,4),
-                ('Sakura','Haruno',8,5),
-                ('Rock','Lee',9,6);
+                ('Grandma', 'Tsunade',0,4),
+                ('Sakura','Haruno',3,5),
+                ('Rock','Lee',4,6);
         
        
   
