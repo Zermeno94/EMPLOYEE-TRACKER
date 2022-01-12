@@ -31,6 +31,7 @@ mainList();
 function mainList() {
     inquirer.prompt([
         { // Displays user prompts 
+            
             type: "list",
             name: "mainList",
             message: "Please choice from the main menu: ",
@@ -182,11 +183,11 @@ function addRole(){
 // viewAllEmployees();
 
 function viewAllEmployees(){
-    const query = ` SELECT employees.id, employees.first_name, employees.last_name,roles.salary,roles.title,departments_name AS departments,CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employees.
+    const query = ` SELECT employees.id, employees.first_name, employees.last_name,roles.salary,roles.title,departments_name AS departments,CONCAT(manager.first_name, "  ", manager.last_name) AS manager FROM employees.
     
     LEFT JOIN roles ON employees.roles_id = roles_id
-    LEFT JOIN departments ON roles.departments_id = departments.id
-    LEFT JOIN employees.manager ON manager.id = employees.manager;`
+    LEFT JOIN departments ON roles.departments_id = departments_id
+    LEFT JOIN employees.manager ON manager.id = employees.manager`
 
     connection.query(query,(err,res)=> {
         if(err) throw err;
