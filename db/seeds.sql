@@ -12,7 +12,7 @@ VALUES  ('CEO', 450000,1),
                 ('Content Marketing Manager',10000,3),
                 ('Marketing Assistant',40000,4),
                 ('Sales Manager',55000,5),
-                ('Sales Representative',55000,6);
+                ('Sales Representative',55000,5);
 
 INSERT INTO employees (first_name,last_name,roles_id,manager_id)
 VALUES  ('Naruto', 'Uzumaki',1,NULL),
@@ -21,7 +21,7 @@ VALUES  ('Naruto', 'Uzumaki',1,NULL),
                 ('Kakashi', 'Hatake',4, NULL),
                 ('Hinata', 'Hyuga',5,3),
                 ('Pervy','Sage',6,1),
-                ('Grandma', 'Tsunade',7,4)
+                ('Grandma', 'Tsunade',7,4),
                 ('Sakura','Haruno',8,5),
                 ('Rock','Lee',9,6);
         
