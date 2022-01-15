@@ -187,7 +187,8 @@ function viewAllEmployees(){
     LEFT JOIN roles ON employees.roles_id = roles_id
     LEFT JOIN departments ON roles.departments_id = departments_id
     LEFT JOIN employees AS e2 ON employees.manager_id = e2.id`
-
+//  since manger doesn't have a table and its actually in employee table, but manage doesn't have id acutually its null
+// therefore, e2 was added 
     connection.query(query,(err,res)=> {
         if(err) throw err;
         console.log(res);
