@@ -183,11 +183,10 @@ function addRole(){
 // viewAllEmployees();
 
 function viewAllEmployees(){
-    const query = ` SELECT employees.id, employees.first_name, employees.last_name, roles.salary, roles.title, departments_name AS departments,CONCAT(manager.first_name, "  ", manager.last_name) AS manager FROM employees
-    
+    const query = ` SELECT employees.id, employees.first_name, employees.last_name, roles.salary, roles.title, departments_name AS departments,CONCAT(e2.first_name, "  ", e2.last_name) AS "manager name" FROM employees
     LEFT JOIN roles ON employees.roles_id = roles_id
     LEFT JOIN departments ON roles.departments_id = departments_id
-    LEFT JOIN employees.manager ON manager.id = employees.manager`
+    LEFT JOIN employees AS e2 ON employees.manager_id = e2.id`
 
     connection.query(query,(err,res)=> {
         if(err) throw err;
