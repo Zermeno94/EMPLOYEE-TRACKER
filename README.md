@@ -53,10 +53,8 @@ Allows non-developers to use a command-line application to manage a company's em
 
 ## Contributers
 * Miranda Zermeno
-* BCS Tutor: Serena Chandler
-* AskBCS assist
-* Private Tutor
-* Classmates: Chris Stallcup
+* AskBCS assistants
+
 
 
 ## Resources & Tutorials  💻
